@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<meta charset="utf-8"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+</script>
+<script>
+	$.getJSON("https://www.etoro.com/sapi/userstats/CopySim/Username/sallyforex/OneYearAgo?callback=?",function(jobj){
+		$.each(jobj.simulation.oneYearAgo.chart, function () {
+				var strone = this.timestamp
+				var dateform = strone.substring(8,10)+'.'+strone.substring(5,7)+'.'+strone.substring(2,4)
+				var equityval = this.equity.toString().replace(/\./g, ',');
+				var html = '<tr>' +
+                  '<td>'+dateform+'</td>' + 
+                  '<td>'+equityval+'</td>' +                
+                  '<td>'+equityval+'</td>' + 
+                  '<td>'+equityval+'</td>' + 
+                  '<td>'+equityval+'</td>' + 
+				  '<td>'+"€"+'</td>' +
+				  '</tr>';
+				$('tbody > tr:first').before(html);
+		});
+		 var tableheader = '<tr>' +
+		 '<td>Datum</td>' +
+		 '<td>Erster</td>' +
+		 '<td>Hoch</td>' +
+		 '<td>Tief</td>' +
+		 '<td>Schluss</td>' + 
+		 '<td></td>' +
+		 '</tr>';
+		 $('tbody > tr:first').before(tableheader);
+});
+</script> 
+
+<html>
+	<body>
+		<table>
+			<header>
+				<tr> 
+<!-- 					<td>Datum</td>
+					<td>Erster</td>
+					<td>Hoch</td>
+					<td>Tief</td>
+					<td>Schluss</td>
+					<td></td>  -->
+				</tr>
+			</header>
+			<tbody>
+			<tr> 
+<!-- 				<td>26.10.10</td> 
+				<td>187,22</td> 
+				<td>187,22</td> 
+				<td>187,22</td> 
+				<td>187,22</td> 
+				<td>€</td>  -->
+			</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
